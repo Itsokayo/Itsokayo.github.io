@@ -21,17 +21,17 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","version":"8.1.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="首先检查服务是否安装1lsof -i:22 如果有输出就是端口开放了，如果没有输出就要需要安装服务">
+<meta name="description" content="默认情况下Ubuntu 的 ssh 服务是关闭状态的，所以需要手动打开">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu 16.0.4 开启 ssh">
 <meta property="og:url" content="http://example.com/2020/12/23/Ubuntu16.0.4/index.html">
 <meta property="og:site_name" content="Wayne x Blog">
-<meta property="og:description" content="首先检查服务是否安装1lsof -i:22 如果有输出就是端口开放了，如果没有输出就要需要安装服务">
+<meta property="og:description" content="默认情况下Ubuntu 的 ssh 服务是关闭状态的，所以需要手动打开">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-23T08:08:47.718Z">
-<meta property="article:modified_time" content="2020-12-25T06:01:18.320Z">
+<meta property="article:modified_time" content="2020-12-28T05:52:27.685Z">
 <meta property="article:author" content="Wayne Liu">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -245,7 +245,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-25 14:01:18" itemprop="dateModified" datetime="2020-12-25T14:01:18+08:00">2020-12-25</time>
+        <time title="修改时间：2020-12-28 13:52:27" itemprop="dateModified" datetime="2020-12-28T13:52:27+08:00">2020-12-28</time>
       </span>
 
   
@@ -258,16 +258,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h5 id="首先检查服务是否安装"><a href="#首先检查服务是否安装" class="headerlink" title="首先检查服务是否安装"></a>首先检查服务是否安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:22</span><br></pre></td></tr></table></figure>
-<p>如果有输出就是端口开放了，如果没有输出就要需要安装服务</p>
+        <p>默认情况下Ubuntu 的 ssh 服务是关闭状态的，所以需要手动打开</p>
 <a id="more"></a>
+<h5 id="首先检查服务是否安装"><a href="#首先检查服务是否安装" class="headerlink" title="首先检查服务是否安装"></a>首先检查服务是否安装</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">lsof</span> -i:22<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果有输出就是端口开放了，如果没有输出就要需要安装服务</p>
+<!--more-->
 
-<h5 id="安装服务"><a href="#安装服务" class="headerlink" title="安装服务"></a>安装服务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install openssh-server openssh-client </span><br></pre></td></tr></table></figure>
-<h5 id="修改sshd配置文件"><a href="#修改sshd配置文件" class="headerlink" title="修改sshd配置文件"></a>修改sshd配置文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi &#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br></pre></td></tr></table></figure>
+<h5 id="安装服务"><a href="#安装服务" class="headerlink" title="安装服务"></a>安装服务</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">apt-get</span> <span class="token function">install</span> openssh-server openssh-client <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="修改sshd配置文件"><a href="#修改sshd配置文件" class="headerlink" title="修改sshd配置文件"></a>修改sshd配置文件</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">vi</span> /etc/ssh/sshd_config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>将配置修改如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PermitRootLogin yes</span><br></pre></td></tr></table></figure>
-<h5 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
-<h5 id="给root用户配置密码"><a href="#给root用户配置密码" class="headerlink" title="给root用户配置密码"></a>给root用户配置密码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">PermitRootLogin <span class="token function">yes</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">service</span> <span class="token function">ssh</span> restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="给root用户配置密码"><a href="#给root用户配置密码" class="headerlink" title="给root用户配置密码"></a>给root用户配置密码</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">passwd</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>之后尝试可以root登陆，GO！</p>
 
     </div>
@@ -338,7 +340,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Wayne Liu</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
     </div>
@@ -346,7 +348,7 @@
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
 
