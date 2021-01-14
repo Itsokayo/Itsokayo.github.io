@@ -1,0 +1,29 @@
+“`
+language: node_js
+node_js: stable
+
+install:
+- npm install -g gulp
+- npm install
+
+# - npm install -g gulp
+
+script:
+- hexo g
+
+after_script:
+- cd ./public
+- git init
+- git config user.name “Itsokayo”
+- git config user.email “12o85268@gmail.com”
+- git add .
+- git commit -m “Update docs with TRAVIS-CI.”
+- git push --force --quiet "https://${c34b86cad054c48c5b670bd5cf7d74d8a2b028e5}@${GH_REF}" master:master
+
+branches:
+only:
+- hexo
+env:
+global:
+- GH_REF: github.com/Itsokayo/Itsokayo.github.io.git
+“`
