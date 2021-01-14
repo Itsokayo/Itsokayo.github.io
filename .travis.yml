@@ -18,7 +18,7 @@ after_script:
 - git config user.email “12o85268@gmail.com”
 - git add .
 - git commit -m “Update docs with TRAVIS-CI.”
-- git push --force --quiet "https://${c34b86cad054c48c5b670bd5cf7d74d8a2b028e5}@${GH_REF}" master:master
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 
 branches:
 only:
